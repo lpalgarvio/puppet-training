@@ -1,5 +1,6 @@
 # puppet-training
-Presentation slides and demo for a Puppet Training
+Presentation slides and demo for a Puppet Training.
+Using docker, docker-compose, puppet 4.2 with agent and master, librarian-puppet, hiera-enc, hiera-yaml and puppetdb.
 
 
 ### Presentation
@@ -15,7 +16,7 @@ It covers the following topics:
 
 In basics, we cover a standard setup using various methods, the terminology and the workflow.
 
-We also discuss multiple environments and the usage of Librarian Puppet (librarian-puppet) to manage these.
+We also talk about multiple environments and the usage of Librarian Puppet (librarian-puppet) to manage these.
 
 ##### Backends
 
@@ -44,10 +45,10 @@ Thus, the following containers can then be launched:
 - puppet_training_centos6_master
 - puppet_training_centos6_puppetdb
 
-These will efectively build and launch a working master, puppetdb and agent node, using currently CentOS 6.
+These will efectively build and launch a working master, puppetdb and agent node, using CentOS 6.
 
 Note: we are using `docker-compose` to manage the containers.
-https://docs.docker.com/compose/install/
+See https://docs.docker.com/compose/install/ for installation.
 
 ##### Getting started
 
