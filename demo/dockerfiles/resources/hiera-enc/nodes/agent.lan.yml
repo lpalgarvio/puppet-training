@@ -1,0 +1,10 @@
+---
+
+environment: production
+
+parameters:
+  role: web
+
+classes:
+  - git
+

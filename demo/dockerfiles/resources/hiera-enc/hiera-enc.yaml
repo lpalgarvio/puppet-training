@@ -1,0 +1,11 @@
+---
+:backends:
+  - yaml
+:yaml:
+  :datadir: /etc/puppetlabs/code/hiera-enc/nodes
+:hierarchy:
+  - "%{clientcert}"
+  - "%{fqdn}"
+  - "%{hostname}"
+  - "default"
+

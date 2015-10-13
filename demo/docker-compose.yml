@@ -1,0 +1,25 @@
+---
+
+#puppet_training_centos6_puppetdb:
+#  image: lpalgarvio/puppet-training:centos6_puppetdb
+#  dockerfile: Dockerfiles/puppetdb.dockerfile
+#  container_name: puppet_training_centos6_puppetdb
+#  hostname: puppetdb
+#  domainname: lan
+
+puppet_training_centos6_master:
+  image: lpalgarvio/puppet-training:centos6_master
+  dockerfile: Dockerfiles/master.dockerfile
+  container_name: puppet_training_centos6_master
+  hostname: master
+  domainname: lan
+
+puppet_training_centos6_agent:
+  image: lpalgarvio/puppet-training:centos6_agent
+  dockerfile: Dockerfiles/agent.dockerfile
+  container_name: puppet_training_centos6_agent
+  hostname: agent
+  domainname: lan
+  links:
+   - puppet_training_centos6_master:master
+
