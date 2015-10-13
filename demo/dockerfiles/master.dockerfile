@@ -58,7 +58,7 @@ RUN printf " \
 #
 
 # Install Hiera-ENC
-RUN git clone -b patch-2 https://github.com/lpalgarvio/puppet-hiera-enc.git /etc/puppetlabs/code/hiera-enc;
+RUN git clone -b v1.0.0 https://github.com/Zetten/puppet-hiera-enc.git /etc/puppetlabs/code/hiera-enc;
 
 # Create symlinks
 RUN ln -sf /etc/puppetlabs/code /etc/puppet; ln -sf /etc/puppetlabs/code/hiera-enc/enc /opt/puppetlabs/bin/hiera-enc;
