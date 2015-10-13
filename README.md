@@ -123,5 +123,13 @@ Helper scripts are located in the 'scripts' directory:
 - `./demo/scripts/master-attach.sh`: to login into master
 - `./demo/scripts/puppetdb-attach.sh`: to login into puppetdb
 
+These should be used right after starting the container on the first run to register the agent in the master.
+
+To do so, login into the master and run `puppet cert list`.
+If the command returns the 'agent' node and a SHA1 key, you can proceed with `puppet cert sign agent`.
+Else, login into the master in another console and rerun `puppet agent --test` to connect to the master.
+
+After the agent is registered and accepted in the master, you can proceed with changes and testing.
+
 Additional scripts are provided for separate interactive (bash) and detached (background) launch, as well as individual build scripts.
 
