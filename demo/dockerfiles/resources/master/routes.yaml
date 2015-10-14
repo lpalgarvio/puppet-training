@@ -1,2 +1,29 @@
 ---
 
+#
+# Puppet Master
+#
+master:
+  facts:
+    # conf: facts_terminus
+    #terminus: puppetdb
+    cache: yaml
+  data_binding:
+    # conf: data_binding_terminus
+    terminus: hiera
+  node:
+    # conf: node_terminus, default: plain
+    terminus: exec
+    # conf: node_cache_terminus
+    cache: write_only_yaml
+  resource:
+    terminus: ral
+  catalog:
+    # conf: catalog_terminus
+    terminus: compiler
+    # conf: catalog_cache_terminus
+    #cache: store_configs
+  report:
+    terminus: processor
+  #  cache: yaml
+
