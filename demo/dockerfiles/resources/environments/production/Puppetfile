@@ -30,11 +30,6 @@ forge "https://forgeapi.puppetlabs.com"
 mod 'puppetlabs-motd', '1.1.1'
 
 #
-# Misc modules
-#
-mod 'evenup-redis'
-
-#
 # Other modules
 #
 mod 'stahnma-epel'

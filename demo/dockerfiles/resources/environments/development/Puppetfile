@@ -32,11 +32,6 @@ mod 'puppetlabs-motd',
   :ref => '1.1.1'
 
 #
-# Misc modules
-#
-mod 'evenup-redis'
-
-#
 # Other modules
 #
 mod 'stahnma-epel'
