@@ -25,7 +25,8 @@ RUN yum -y install puppetserver puppetdb-termini && \
 RUN /bin/bash -l -c "puppet resource package puppetdb-termini ensure=latest";
 
 # Copy configuration and data
-COPY resources/master/* /etc/puppetlabs/code/
+COPY resources/master/hiera.yaml /etc/puppetlabs/code/
+COPY resources/master/routes.yaml /etc/puppetlabs/puppet/
 
 # Update configuration
 RUN sed -i 's>-Xms2g>-Xms256m>' /etc/sysconfig/puppetserver; sed -i 's>-Xmx2g>-Xmx256m>' /etc/sysconfig/puppetserver;
@@ -43,28 +44,21 @@ RUN printf " \
 \n# PuppetDB \
 \nstoreconfigs = false \
 \nstoreconfigs_backend = puppetdb \
-\nreports = store,puppetdb \
+\nreports = store \
 \n" >> /etc/puppetlabs/puppet/puppet.conf;
-RUN printf " \
-\nmaster: \
-\n  # PuppetDB \
-\n  facts: \
-\n    terminus: puppetdb \
-\n    cache: yaml \
-\n" >> /etc/puppetlabs/puppet/routes.yaml;
 
 #
 # Puppet Backends: Hiera ENC
 #
 
 # Install Hiera-ENC
-RUN git clone -b v1.0.0 https://github.com/Zetten/puppet-hiera-enc.git /etc/puppetlabs/code/hiera-enc;
+RUN git clone https://github.com/Zetten/puppet-hiera-enc.git /etc/puppetlabs/code/hiera-enc; cd /etc/puppetlabs/code/hiera-enc; git checkout v1.0.0 -b 1.0.0;
 
 # Create symlinks
 RUN ln -sf /etc/puppetlabs/code /etc/puppet; ln -sf /etc/puppetlabs/code/hiera-enc/enc /opt/puppetlabs/bin/hiera-enc;
 
 # Copy configuration and data
-COPY resources/hiera-enc/* /etc/puppetlabs/code/hiera-enc/
+COPY resources/hiera-enc /etc/puppetlabs/code/hiera-enc/
 
 # Update configuration
 RUN printf " \
@@ -102,7 +96,7 @@ RUN cp -R /etc/puppetlabs/code/environments/production /etc/puppetlabs/code/envi
 RUN /bin/bash -l -c "cd /etc/puppetlabs/code/environments/development; librarian-puppet init;";
 
 # Copy configuration and data
-COPY resources/environments/development/* /etc/puppetlabs/code/environments/development/
+COPY resources/environments/development /etc/puppetlabs/code/environments/development/
 
 # Install the modules
 RUN /bin/bash -l -c "cd /etc/puppetlabs/code/environments/development; librarian-puppet install; librarian-puppet update; librarian-puppet show";
@@ -115,7 +109,7 @@ RUN /bin/bash -l -c "cd /etc/puppetlabs/code/environments/development; librarian
 RUN /bin/bash -l -c "cd /etc/puppetlabs/code/environments/production; librarian-puppet init;";
 
 # Copy configuration and data
-COPY resources/environments/production/* /etc/puppetlabs/code/environments/production/
+COPY resources/environments/production /etc/puppetlabs/code/environments/production/
 
 # Install the modules
 RUN /bin/bash -l -c "cd /etc/puppetlabs/code/environments/production; librarian-puppet install; librarian-puppet update; librarian-puppet show";
