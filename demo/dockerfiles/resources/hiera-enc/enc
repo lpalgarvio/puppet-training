@@ -1,0 +1,38 @@
+#!/opt/puppetlabs/bin/ruby
+#
+# Copyright 2014 Peter van Zetten
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+require 'hiera'
+require 'yaml'
+
+# Query scope
+scope = { 'clientcert' => ARGV[0], 'fqdn' => ARGV[0], 'hostname' => ARGV[0] }
+
+# Hiera interface
+hiera = Hiera.new(:config => '/etc/puppetlabs/code/hiera-enc/hiera-enc.yaml')
+
+lookup_values = ['environment', 'parameters', 'classes']
+
+result = {}
+
+lookup_values.each do |value|
+  hiera_value = hiera.lookup(value, nil, scope)
+  if hiera_value
+    result[value] = hiera_value
+  end
+end
+
+puts result.to_yaml

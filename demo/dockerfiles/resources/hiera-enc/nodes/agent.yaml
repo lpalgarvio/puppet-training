@@ -1,10 +1,11 @@
 ---
+# Definition for agent node
 
 environment: production
 
 parameters:
-  role: web
+  role: extrepo
 
 classes:
-  - git
+  - epel
 
