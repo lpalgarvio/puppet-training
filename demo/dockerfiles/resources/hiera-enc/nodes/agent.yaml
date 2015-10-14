@@ -1,10 +1,12 @@
 ---
-# Definition for agent node
+################################################################################
+# Node: Agent                                                                  #
+################################################################################
 
 environment: production
 
 parameters:
-  role: extrepo
+  role: server
 
 classes:
   - epel

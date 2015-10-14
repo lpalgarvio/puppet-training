@@ -1,4 +1,11 @@
 ---
+################################################################################
+# Routes (for terminus)                                                        #
+################################################################################
+# https://docs.puppetlabs.com/puppet/latest/reference/config_file_routes.html
+# https://docs.puppetlabs.com/references/latest/indirection.html
+# https://docs.puppetlabs.com/puppetdb/2.2/connect_puppet_master.html
+# https://docs.puppetlabs.com/puppetdb/2.2/connect_puppet_apply.html
 
 #
 # Puppet Master

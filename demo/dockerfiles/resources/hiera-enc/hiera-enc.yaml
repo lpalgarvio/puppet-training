@@ -1,11 +1,27 @@
 ---
-:backends:
-  - yaml
-:yaml:
-  :datadir: /etc/puppetlabs/code/hiera-enc/nodes
+################################################################################
+# Hiera ENC                                                                    #
+################################################################################
+# https://docs.puppetlabs.com/puppet/latest/reference/config_file_hiera.html
+# https://docs.puppetlabs.com/hiera/1/index.html
+# https://ask.puppetlabs.com/question/527/are-hiera-and-foreman-parameters-mutually-exclusive/
+
+#
+# Hierarchies
+#
 :hierarchy:
   - "%{clientcert}"
   - "%{fqdn}"
   - "%{hostname}"
   - "default"
+
+#
+# Backends
+#
+:backends:
+  - yaml
+
+# YAML, for configuration
+:yaml:
+  :datadir: /etc/puppetlabs/code/hiera-enc/nodes
 

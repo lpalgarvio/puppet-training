@@ -1,6 +1,14 @@
 ---
-:backends:
-  - yaml
+################################################################################
+# Hiera (hierarchical storage)                                                 #
+################################################################################
+# https://docs.puppetlabs.com/puppet/latest/reference/config_file_hiera.html
+# https://docs.puppetlabs.com/hiera/1/index.html
+# https://ask.puppetlabs.com/question/527/are-hiera-and-foreman-parameters-mutually-exclusive/
+
+#
+# Hierarchies
+#
 :hierarchy:
   - "nodes/%{::trusted.certname}"
   - "nodes/%{fqdn}"
@@ -8,12 +16,23 @@
   - "roles/%{role}"
   - common
 
-:yaml:
-# datadir is empty here, so hiera uses its defaults:
-# - /etc/puppetlabs/code/environments/%{environment}/hieradata on *nix
-# - %CommonAppData%\PuppetLabs\code\environments\%{environment}\hieradata on Windows
-# When specifying a datadir, make sure the directory exists.
-  :datadir: /etc/puppetlabs/code/environments/%{environment}/hieradata
+#
+# Backends
+#
+:backends:
+  - yaml
+  - json
 
+# YAML, for configuration
+:yaml:
+  :datadir: '/etc/puppetlabs/code/environments/%{environment}/hieradata'
+
+# JSON, for sensitive data
+:json:
+  :datadir: '/etc/puppetlabs/code/environments/%{environment}/hieradata'
+
+#
+# Miscellaneous
+#
 :merge_behavior: deeper
 
