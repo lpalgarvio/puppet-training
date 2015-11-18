@@ -82,7 +82,8 @@ RUN echo "install: --no-rdoc --no-ri" >> ~/.gemrc; echo "update:  --no-rdoc --no
 #
 
 # Install Librarian-puppet 2.0.1 (for ruby >=1.9.x) gems
-RUN /bin/bash -l -c "gem install librarian-puppet -v 2.0.1";
+#RUN /bin/bash -l -c "gem install librarian-puppet -v 2.0.1";
+RUN /bin/bash -l -c "gem install librarian-puppet";
 
 # Create symlinks
 RUN ln -sf /opt/puppetlabs/puppet/bin/librarian-puppet /opt/puppetlabs/bin/librarian-puppet;
