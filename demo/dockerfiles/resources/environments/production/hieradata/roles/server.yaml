@@ -6,3 +6,8 @@
 classes:
   - epel
 
+hosts::host_entries:
+  'service3':
+    ip: '10.0.0.3'
+    host_aliases:
+      - 'srv3'

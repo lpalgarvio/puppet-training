@@ -3,3 +3,12 @@
 # Node: Agent                                                                  #
 ################################################################################
 
+hosts::host_entries:
+  'application1':
+    ip: '10.0.0.4'
+    host_aliases:
+      - 'app1'
+  'application2':
+    ip: '10.0.0.5'
+    host_aliases:
+      - 'app2'
