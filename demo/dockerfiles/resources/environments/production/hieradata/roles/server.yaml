@@ -11,3 +11,8 @@ hosts::host_entries:
     ip: '10.0.0.3'
     host_aliases:
       - 'srv3'
+
+test::sub:
+  duh: '123'
+  oops: '567'
+  yes:  'sir'

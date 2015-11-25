@@ -12,3 +12,7 @@ hosts::host_entries:
     ip: '10.0.0.5'
     host_aliases:
       - 'app2'
+
+test::sub:
+  lol: '2434'
+  nup: '789'
